@@ -4,7 +4,7 @@ import threading
 
 
 def runserver():
-    serverip = '192.168.1.73'
+    serverip = '192.168.2.35'
     port = 9000
 
     buffsize = 4096
@@ -24,13 +24,13 @@ def runserver():
         # data = 'LED1 : ON'/'LED2: OFF'
         data_split = data.split(':')
         if float(data_split[1]) > 28:
-            v_status.set('อุณหภูมิ: {} อากาศร้อน'.format(data_split[1]))
-            img = PhotoImage(file="upload/images/hot.png")
+            v_status.set('อุณหภูมิ: {} ร้อน'.format(data_split[1]))
+            img = PhotoImage(file="images/hot.png")
             ICON.configure(image=img)
             ICON.image = img
         else:
-            v_status.set('อุณหภูมิ: {} อากาศเย็น'.format(data_split[1]))
-            img = PhotoImage(file="upload/images/cold.png")
+            v_status.set('อุณหภูมิ: {} เย็น'.format(data_split[1]))
+            img = PhotoImage(file="images/cold.png")
             ICON.configure(image=img)
             ICON.image = img
         '''
@@ -64,7 +64,7 @@ L2 = Label(GUI, textvariable=v_status, font=FONT, )
 L2.configure(fg='#8539a8')
 L2.pack()
 
-img = PhotoImage(file='wifi/images/start.png')
+img = PhotoImage(file='images/start.png')
 ICON = Label(GUI, image=img)
 ICON.pack()
 
