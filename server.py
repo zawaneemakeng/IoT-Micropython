@@ -2,7 +2,7 @@ import socket
 
 
 def runserver():
-    serverip = '192.168.1.97'
+    serverip = '192.168.1.73'
     port = 9000
 
     buffsize = 4096
