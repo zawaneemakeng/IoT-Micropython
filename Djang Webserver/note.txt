@@ -1,0 +1,105 @@
+-  ติดตั้ง
+python -m pip install virtualenv
+
+- เช็คว่าติดตั้งได้ไหม
+python -m  virtualenv
+
+- create folder Django Webserver and cd
+python -m  virtualenv venv
+#venv ห้องเล็กๆ ในการสร้างเว็ป ใช้เเค่ django django res
+ไม่จำเป็นต้องใช้ตัวอื่น
+
+- จะเข้าไปในห้อง venv คือการ activate
+.\venv\scripts\activate
+
+-chart.js พล็อตกราฟ
+
+- ติดตั้ง django 
+pip install django==3.2
+#เพคเกจในการทำระบบ API มีระบบโทเคน
+pip list
+
+- ใช้งาน start
+django-admin startproject iotserver
+cd iotserver
+
+- run server
+python manage.py runserver
+#http://localhost:8000/
+
+- run server with IP สามารถรันผ่านมือถือ
+cd iotserver settings.py
+ALLOWED_HOSTS = ['*']
+python manage.py runserver 0.0.0.0:8000
+http://192.168.2.37:8000/
+
+- ติดตั้ง djangorestframework
+pip install djangorestframework
+
+- สร้างระบบ admin เพื่อให้สร้าง database มีusername 
+เราไม่ต้องเขียนเอง จัดการเรื่อง session
+python manage.py migrate
+
+- สร้างชื่อ 
+python manage.py createsuperuser
+username = admin
+password = 12341234
+
+- เปลี่ยนรหัส โปรเจค 
+python manage.py changepassword admin
+
+- เข้า django administration
+http://localhost:8000/admin/ 
+
+- เเยกเเอป เช่น เเยกsensor
+python manage.py startapp sensor
+
+- กรอกชื่อเเอป ที่ติดตั้งใน setting
+INSTALLED_APPS =['sensor',
+
+-iotserver = เเผนกต้อนรับ
+settings = ผู้จัดการ ถ้าจะทำอะไรต้องผ่านอันนี้ก่อน
+INSTALLED_APPS = [
+    'sensor']
+urls = พนักงานต้อนรับอีกคน เลขา  เมื่อมีการ request ต้องผ่าน urls 
+กรณีทราบว่าจะไปหาใคร เช่น http://localhost:8000/admin/ 
+กรณีไม่ทราบว่าจะไปหาใคร พาไปหา
+ path('', include('sensor.urls'))
+sensor.urls = เลขาอีกคนนึง 
+กรณีไม่ทราบว่าจะไปหาใคร พาไปหา 
+HOME
+-สร้างคนบันทึกข้อมูล sensor ลง database  หาคนภายนอก ต้อง import 
+pip install djangorestframework
+บอก settings ว่าต้องการเข้ามา
+INSTALLED_APPS = [
+    'rest_framework']
+-models.py = database จะเก็บอะไรบ้าง
+เช่น
+class TempHumid(models.Model):
+    code = models.CharField(max_length=100)
+เมื่อสร้างฐานข้อมูลต้องรันทุกครั้ง หรือมีการเปลียนเเปลง
+python manage.py makemigrations
+python manage.py migrate
+0001 system file
+ .models .ด้านหน้าคือการอ้างไฟล์ที่อยู่ในfolder เดียวกัน
+สั่งให้มา ในadmin
+-serializers.py
+ตรวจสอบ จัดการได้ auto
+
+GET METHOD เข้าผ่านurl
+POST METHOD
+r.content
+r.json()
+
+-------------python server-------------
+-for web api
+flask
+ไม่เเถม เเต่เร็ว ต้องสร้างฐานข้อมูลเอง
+
+fastAPI
+ทำ API โดยเฉพาะ
+
+django 
+เเถมให้ระบบสร้างฐานข้อมูล มีระบบพร้อม ใช้งานง่ายกว่า
+
+
